@@ -67,11 +67,23 @@ exports.updateUserById = async (req, res) => {
       });
     }
     res.status(200).json({
-      message: "User fetched !!!",
+      message: "User Updated !!!",
       data: {
         user: user,
       },
     });
+  } catch (error) {
+    res.status(400).json({
+      message: "Fail !!!",
+      error: error,
+    });
+  }
+};
+
+exports.deleteUserById = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.status(204).json();
   } catch (error) {
     res.status(400).json({
       message: "Fail !!!",
