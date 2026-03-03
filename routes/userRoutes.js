@@ -1,4 +1,4 @@
-const { signUp } = require("../controllers/authController");
+const { signUp, signIn } = require("../controllers/authController");
 const {
   createUser,
   getAllUsers,
@@ -12,6 +12,7 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/signUp", signUp);
+router.post("/signIn", signIn);
 
 router.route("/").post(createUser).get(getAllUsers);
 router
